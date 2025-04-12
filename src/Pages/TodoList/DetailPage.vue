@@ -4,6 +4,7 @@
     <h1>detail page</h1>
     <h2>{{ todo.todo }}</h2>
     <p>{{ todo.desc }}</p>
+    <p>{{ todo.done ? 'true' : 'false' }}</p>
 
     <button @click="handleEditButtonClick">수정하기</button>
     <button @click="handleDeleteButtonClick">삭제하기</button>

@@ -3,6 +3,7 @@
     <h1>edit page</h1>
     <p>todo title: <input type="text" v-model.trim="todo.todo" /></p>
     <p>todo desc: <input type="text" v-model.trim="todo.desc" /></p>
+    <input type="checkbox" v-model="todo.done" />
     <button @click="handleEditButtonClick">수정 완료</button>
     <button @click="goBack">취소</button>
   </div>

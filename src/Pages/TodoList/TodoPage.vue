@@ -3,9 +3,8 @@
     <h1>Todo 조회하기</h1>
 
     <li v-for="(item, index) in todoArr">
-      {{ item.id }}
-      <RouterLink :to="`/detail/${item.id}`">{{ item.todo }}</RouterLink>
       <input type="checkbox" disabled :checked="item.done === true" />
+      <RouterLink :to="`/detail/${item.id}`">{{ item.todo }}</RouterLink>
     </li>
   </div>
 </template>
