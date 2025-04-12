@@ -24,13 +24,13 @@ const router = createRouter({
       component: CreatePage,
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
       component: DetailPage,
       props: true,
     },
     {
-      path: '/edit',
+      path: '/edit/:id',
       name: 'edit',
       component: EditPage,
       props: true,
