@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "todo": "TEST2",
-      "desc": "TEST2",
-      "done": false,
-      "id": "1"
-    },
-    {
       "id": "2",
       "todo": "example todo2",
       "desc": "example desc2",
