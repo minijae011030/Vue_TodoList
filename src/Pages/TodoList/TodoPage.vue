@@ -4,7 +4,8 @@
 
     <li v-for="(item, index) in todoArr">
       {{ item.id }}
-      <RouterLink to="/">{{ item.todo }}</RouterLink>
+      <RouterLink :to="`/detail/${item.id}`">{{ item.todo }}</RouterLink>
+      <input type="checkbox" disabled :checked="item.done === true" />
     </li>
   </div>
 </template>
