@@ -4,6 +4,7 @@ import CreatePage from '@/pages/TodoList/CreatePage.vue'
 import DetailPage from '@/pages/TodoList/DetailPage.vue'
 import EditPage from '@/pages/TodoList/EditPage.vue'
 import TodoPage from '@/pages/TodoList/TodoPage.vue'
+import { useAuthStore } from '@/stores/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -49,8 +50,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const auth = useAuthStore()
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (localStorage.getItem('auth') !== 'true') {
+    if (!auth.isLoggedIn) {
       alert('로그인이 필요합니다.')
       return next({ name: 'login' })
     }

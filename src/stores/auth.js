@@ -21,11 +21,6 @@ export const useAuthStore = defineStore('auth', {
           return false
         }
 
-        localStorage.setItem('auth', 'true')
-        localStorage.setItem('email', result.data[0].email)
-        localStorage.setItem('id', result.data[0].id)
-        localStorage.setItem('name', result.data[0].name)
-
         this.user = {
           email: result.data[0].email,
           id: result.data[0].id,
@@ -43,11 +38,7 @@ export const useAuthStore = defineStore('auth', {
 
     getUser() {
       try {
-        const userInfo = {
-          id: localStorage.getItem('id'),
-          email: localStorage.getItem('email'),
-          name: localStorage.getItem('name'),
-        }
+        const userInfo = localStorage.getItem('auth')
 
         return userInfo
       } catch (e) {
@@ -58,7 +49,8 @@ export const useAuthStore = defineStore('auth', {
 
     getUserId() {
       try {
-        return localStorage.getItem('id')
+        const auth = localStorage.getItem('auth')
+        return auth.id
       } catch (e) {
         alert('id를 불러오는 중 에러 발생')
         return null
@@ -70,18 +62,23 @@ export const useAuthStore = defineStore('auth', {
         alert('로그아웃 하시겠습니까?')
 
         localStorage.removeItem('auth')
-        localStorage.removeItem('email')
-        localStorage.removeItem('id')
-        localStorage.removeItem('name')
 
-        this.user = null
-        this.isLoggedIn = false
-
+        alert('로그아웃이 완료되었습니다.')
         return true
       } catch (e) {
         alert('로그아웃 중 에러 발생')
         return false
       }
     },
+  },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: 'auth',
+        storage: localStorage,
+        paths: ['user', 'isLoggedIn'],
+      },
+    ],
   },
 })
