@@ -10,7 +10,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login({ email, password }) {
       try {
-        const result = await axios.get(`http://localhost:3000/users?email=${email}`)
+        const result = await axios.get(`http://localhost:3010/users?email=${email}`)
 
         if (result.data.length == 0) {
           alert('일치하는 이메일이 없습니다.')

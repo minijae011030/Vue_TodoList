@@ -32,14 +32,14 @@ const handleEditButtonClick = () => {
 
 const handleDeleteButtonClick = async () => {
   if (window.confirm('삭제하시겠습니까?')) {
-    const result = await axios.delete(`http://localhost:3000/todos/${id}`)
+    const result = await axios.delete(`http://localhost:3010/todos/${id}`)
     console.log('삭제되었습니다.')
     router.push('/todo')
   }
 }
 
 const fetchTodoDetail = async () => {
-  const result = await axios.get(`http://localhost:3000/todos/${id}`)
+  const result = await axios.get(`http://localhost:3010/todos/${id}`)
   todo.value = result.data
 }
 

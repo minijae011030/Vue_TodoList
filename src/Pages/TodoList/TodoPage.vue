@@ -18,7 +18,7 @@ const auth = useAuthStore()
 const id = auth.getUserId()
 
 const fetchTodo = async () => {
-  const result = await axios.get(`http://localhost:3000/todos?memberId=${id}`)
+  const result = await axios.get(`http://localhost:3010/todos?memberId=${id}`)
   todoArr.value = result.data
 }
 

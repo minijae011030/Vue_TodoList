@@ -30,7 +30,7 @@ const addTodo = async () => {
     done: false,
   }
   try {
-    const result = await axios.post('http://localhost:3000/todos', newTodo)
+    const result = await axios.post('http://localhost:3010/todos', newTodo)
     alert('생성이 완료되었습니다.')
     router.push('/todo')
   } catch (e) {

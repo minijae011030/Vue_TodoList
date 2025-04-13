@@ -21,7 +21,7 @@ const id = params.id
 
 const todo = ref([])
 const fetchTodoDetail = async () => {
-  const result = await axios.get(`http://localhost:3000/todos/${id}`)
+  const result = await axios.get(`http://localhost:3010/todos/${id}`)
   todo.value = result.data
 }
 
@@ -33,7 +33,7 @@ const handleEditButtonClick = async () => {
       done: todo.value.done,
     }
 
-    const result = await axios.put(`http://localhost:3000/todos/${id}`, newItem)
+    const result = await axios.put(`http://localhost:3010/todos/${id}`, newItem)
     alert('수정이 완료되었습니다.')
     router.push(`/detail/${id}`)
   }
