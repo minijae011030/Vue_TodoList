@@ -7,11 +7,11 @@
         <li
           class="list-none flex justify-between w-full px-4 py-3 border rounded-lg hover:bg-gray-100 transition-all"
         >
-          <div class="flex gap-2">
+          <div class="flex gap-5">
             <input type="checkbox" disabled :checked="item.done === true" />
             <p>{{ item.todo }}</p>
           </div>
-          <i class="bi bi-arrow-right-circle-fill"></i>
+          <i class="bi bi-arrow-right-circle-fill my-auto"></i>
         </li>
       </RouterLink>
     </div>
