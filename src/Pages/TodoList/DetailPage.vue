@@ -11,12 +11,13 @@
   </div>
 </template>
 <script setup>
-import axios from 'axios'
+import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
+const todoStore = useTodoStore()
 
 const id = route.params.id
 
@@ -31,16 +32,14 @@ const handleEditButtonClick = () => {
 }
 
 const handleDeleteButtonClick = async () => {
-  if (window.confirm('삭제하시겠습니까?')) {
-    const result = await axios.delete(`http://localhost:3010/todos/${id}`)
-    console.log('삭제되었습니다.')
+  if (todoStore.deleteTodo({ id })) {
     router.push('/todo')
   }
 }
 
 const fetchTodoDetail = async () => {
-  const result = await axios.get(`http://localhost:3010/todos/${id}`)
-  todo.value = result.data
+  const result = await todoStore.getTodoDetail({ id })
+  todo.value = result
 }
 
 fetchTodoDetail()

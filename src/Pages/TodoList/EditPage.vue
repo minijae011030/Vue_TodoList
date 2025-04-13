@@ -9,32 +9,35 @@
   </div>
 </template>
 <script setup>
-import axios from 'axios'
+import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
 
+const todoStore = useTodoStore()
+
 const params = route.params
 const id = params.id
 
 const todo = ref([])
+
 const fetchTodoDetail = async () => {
-  const result = await axios.get(`http://localhost:3010/todos/${id}`)
-  todo.value = result.data
+  const result = await todoStore.getTodoDetail({ id })
+  todo.value = result
 }
 
 const handleEditButtonClick = async () => {
-  if (window.confirm('수정하시겠습니까?')) {
-    const newItem = {
-      todo: todo.value.todo,
-      desc: todo.value.desc,
-      done: todo.value.done,
-    }
+  const newItem = {
+    todo: todo.value.todo,
+    desc: todo.value.desc,
+    done: todo.value.done,
+  }
 
-    const result = await axios.put(`http://localhost:3010/todos/${id}`, newItem)
-    alert('수정이 완료되었습니다.')
+  const result = await todoStore.editTodo({ id, newItem })
+
+  if (result) {
     router.push(`/detail/${id}`)
   }
 }

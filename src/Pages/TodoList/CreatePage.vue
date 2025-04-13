@@ -11,13 +11,16 @@
 </template>
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import axios from 'axios'
+import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
 const auth = useAuthStore()
 const id = auth.getUserId()
+
+const todoStore = useTodoStore()
 
 const todo = ref('')
 const desc = ref('')
@@ -29,12 +32,10 @@ const addTodo = async () => {
     desc: desc.value,
     done: false,
   }
-  try {
-    const result = await axios.post('http://localhost:3010/todos', newTodo)
-    alert('생성이 완료되었습니다.')
+
+  const result = await todoStore.createTodo({ newTodo })
+  if (result) {
     router.push('/todo')
-  } catch (e) {
-    alert('생성 중 오류')
   }
 }
 

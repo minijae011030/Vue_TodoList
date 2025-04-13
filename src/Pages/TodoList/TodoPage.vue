@@ -10,16 +10,17 @@
 </template>
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import axios from 'axios'
+import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 
+const todoStore = useTodoStore()
 const todoArr = ref([])
 const auth = useAuthStore()
 const id = auth.getUserId()
 
 const fetchTodo = async () => {
-  const result = await axios.get(`http://localhost:3010/todos?memberId=${id}`)
-  todoArr.value = result.data
+  const result = await todoStore.getTodoList({ memberId: id })
+  todoArr.value = result
 }
 
 fetchTodo()
