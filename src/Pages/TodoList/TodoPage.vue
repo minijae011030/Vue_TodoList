@@ -9,13 +9,16 @@
   </div>
 </template>
 <script setup>
+import { useAuthStore } from '@/stores/auth'
 import axios from 'axios'
 import { ref } from 'vue'
 
 const todoArr = ref([])
+const auth = useAuthStore()
+const id = auth.getUserId()
 
 const fetchTodo = async () => {
-  const result = await axios.get('http://localhost:3000/todos')
+  const result = await axios.get(`http://localhost:3000/todos?memberId=${id}`)
   todoArr.value = result.data
 }
 
