@@ -26,8 +26,6 @@ const login = async (e) => {
     <div class="flex gap-4 justify-around text-center">
       <RouterLink to="/">HOME</RouterLink>
 
-      <RouterLink to="/login">LOGIN</RouterLink>
-
       <RouterLink to="/todo">TODO</RouterLink>
 
       <RouterLink to="/create">CREATE</RouterLink>
