@@ -8,8 +8,8 @@
     </div>
     <h1 class="text-xl font-bold">상세 페이지</h1>
     <div class="flex flex-col items-left w-full gap-3 border rounded-lg p-10">
-      <div class="flex justify-between">
-        <h2 class="text-lg font-bold">{{ todo.todo }}</h2>
+      <div class="flex justify-between items-start">
+        <h2 class="text-lg font-bold w-[300px]">{{ todo.todo }}</h2>
         <div class="flex gap-2">
           <button class="text-sm" @click="handleEditButtonClick">수정하기</button>
           <button class="text-sm" @click="handleDeleteButtonClick">삭제하기</button>
