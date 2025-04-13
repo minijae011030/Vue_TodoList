@@ -5,9 +5,12 @@ export const useTodoStore = defineStore('todo', {
   actions: {
     async createTodo({ newTodo }) {
       try {
-        const result = await axios.post('http://localhost:3010/todos', newTodo)
-        alert('생성이 완료되었습니다.')
-        return true
+        if (window.confirm('생성하시겠습니까?')) {
+          const result = await axios.post('http://localhost:3010/todos', newTodo)
+          alert('생성이 완료되었습니다.')
+          return true
+        }
+        return false
       } catch (e) {
         alert('생성 중 오류')
         return false

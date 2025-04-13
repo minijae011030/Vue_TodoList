@@ -1,12 +1,37 @@
 <template lang="">
-  <div>
-    <h1>Todo 생성 페이지</h1>
+  <div class="flex flex-col gap-4 w-[500px] m-auto items-center">
+    <div class="w-full items-start">
+      <button @click="goBack" class="flex gap-2 text-gray-500">
+        <i class="bi bi-arrow-left"></i>
+        뒤로가기
+      </button>
+    </div>
+    <h1 class="text-xl font-bold">Todo 생성 페이지</h1>
 
-    <p>todo: <input type="text" v-model.trim="todo" /></p>
-    <p>desc: <input type="text" v-model.trim="desc" /></p>
+    <form class="flex flex-col gap-5 border rounded-lg p-10">
+      <div class="flex gap-3 text-center items-center">
+        <p class="w-[80px] text-left">제목</p>
+        <input
+          class="border rounded-md px-4 py-2 w-[300px]"
+          type="text"
+          placeholder="todo 제목을 입력하세요"
+          v-model.trim="todo"
+        />
+      </div>
+      <div class="flex gap-3 text-center items-center">
+        <p class="w-[80px] text-left">설명</p>
+        <input
+          class="border rounded-md px-4 py-2 w-[300px]"
+          type="text"
+          placeholder="todo 설명을 입력하세요"
+          v-model.trim="desc"
+        />
+      </div>
 
-    <button @click="addTodo">작성</button>
-    <button @click="goBack">취소</button>
+      <button class="border rounded-full p-2 w-full mt-6" type="submit" @click="addTodo">
+        작성
+      </button>
+    </form>
   </div>
 </template>
 <script setup>
