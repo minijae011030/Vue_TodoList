@@ -38,9 +38,7 @@ export const useAuthStore = defineStore('auth', {
 
     getUser() {
       try {
-        const userInfo = localStorage.getItem('auth')
-
-        return userInfo
+        return this.user
       } catch (e) {
         alert('user info를 불러오는 중 에러 발생')
         return null
@@ -49,8 +47,7 @@ export const useAuthStore = defineStore('auth', {
 
     getUserId() {
       try {
-        const auth = localStorage.getItem('auth')
-        return auth.id
+        return this.user.id
       } catch (e) {
         alert('id를 불러오는 중 에러 발생')
         return null
@@ -62,6 +59,8 @@ export const useAuthStore = defineStore('auth', {
         alert('로그아웃 하시겠습니까?')
 
         localStorage.removeItem('auth')
+        this.user = null
+        this.isLoggedIn = false
 
         alert('로그아웃이 완료되었습니다.')
         return true
