@@ -1,4 +1,5 @@
 import HomePage from '@/Pages/HomePage.vue'
+import LoginPage from '@/Pages/LoginPage.vue'
 import CreatePage from '@/Pages/TodoList/CreatePage.vue'
 import DetailPage from '@/Pages/TodoList/DetailPage.vue'
 import EditPage from '@/Pages/TodoList/EditPage.vue'
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginPage,
     },
     {
       path: '/todo',
