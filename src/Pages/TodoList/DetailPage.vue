@@ -1,13 +1,25 @@
 <template lang="">
-  <div>
-    <button @click="goBack">뒤로가기</button>
-    <h1>detail page</h1>
-    <h2>{{ todo.todo }}</h2>
-    <p>{{ todo.desc }}</p>
-    <p>{{ todo.done ? 'true' : 'false' }}</p>
-
-    <button @click="handleEditButtonClick">수정하기</button>
-    <button @click="handleDeleteButtonClick">삭제하기</button>
+  <div class="flex flex-col gap-4 w-[500px] m-auto items-center">
+    <div class="w-full items-start">
+      <button @click="goBack" class="flex gap-2 text-gray-500">
+        <i class="bi bi-arrow-left"></i>
+        뒤로가기
+      </button>
+    </div>
+    <h1 class="text-xl font-bold">상세 페이지</h1>
+    <div class="flex flex-col items-left w-full gap-3 border rounded-lg p-10">
+      <div class="flex justify-between">
+        <h2 class="text-lg font-bold">{{ todo.todo }}</h2>
+        <div class="flex gap-2">
+          <button class="text-sm" @click="handleEditButtonClick">수정하기</button>
+          <button class="text-sm" @click="handleDeleteButtonClick">삭제하기</button>
+        </div>
+      </div>
+      <div class="h-[100px] overflow-auto pt-4">
+        <p>{{ todo.desc }}</p>
+      </div>
+      <p class="text-sm text-gray-400 mt-4">완료 여부: {{ todo.done ? '완료' : '미완료' }}</p>
+    </div>
   </div>
 </template>
 <script setup>
